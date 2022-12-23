@@ -24,7 +24,7 @@ function GA(number_of_city){
                 Distance_between_cities[ i ][ j ] = 0; 
             }
             else{
-                random_distance = Math.floor(Math.random()*100);
+                random_distance = Math.ceil(Math.random()*100);
                 Distance_between_cities[ i ][ j ] = random_distance;
                 Distance_between_cities[ j ][ i ] = random_distance;
             }

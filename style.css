@@ -86,7 +86,7 @@ input {
 }
 
 .footer {
-    background-color: #000;
+    background-color: rgb(77, 77, 77);
     color: white;
     padding: 5px 0;
     display: flex;
@@ -94,5 +94,30 @@ input {
     position: fixed;
     bottom: 0;
     width: 100%;
+    box-shadow: -5px -5px 10px #fff, 5px 5px 10px #babebc;
+}
+
+#best-rote {
+    border-radius: 7px;
+    padding: 7px 7px 7px 37px;
+    display: flex;
+    text-align: center;
+    background-color: 0093ff;
+    box-shadow: -5px -5px 10px #fff, 5px 5px 10px #babebc;
+}
+
+#fitness {
+    border-radius: 7px;
+    padding: 7px;
+    display: flex;
+    text-align: center;
+    box-shadow: -5px -5px 10px #fff, 5px 5px 10px #babebc;
+}
+
+#matrix {
+    border-radius: 7px;
+    padding: 7px 7px 7px 37px;
+    display: flex;
+    text-align: center;
     box-shadow: -5px -5px 10px #fff, 5px 5px 10px #babebc;
 }
