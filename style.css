@@ -1,0 +1,97 @@
+@font-face {
+    font-family: "vazir";
+    src: url("fonts/Vazir.woff") format('woff');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    direction: rtl;
+    font-family: 'vazir', Arial, sans-serif;
+    font-weight:normal;
+}
+
+.title {
+    background-color: #b6d4fe;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    box-shadow: -5px -5px 10px #fff, 5px 5px 10px #babebc;
+}
+
+.input-section {
+    background-color: #ebecf0;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    box-shadow: -5px -5px 10px #fff, 5px 5px 10px #babebc;
+}
+
+.input-text {
+    margin-bottom: 7px;
+}
+
+
+.btn {
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    padding: 7px 20px;
+    margin: 7px;
+    cursor: pointer;
+    background-color: gray;
+    color: white;
+}
+
+input {
+    padding: 16px;
+    margin: 8px 0;
+    border: 0;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: inset 7px 2px 10px #babebc, inset 5px -5px 12px #fff;
+    text-align: center;
+}
+
+.container {
+    display: none;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}  
+
+.matrix-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    direction: ltr;
+    padding: 7px;
+    height: 100%;
+    width: 100%;
+}
+
+.info-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 7px;
+    height: 100%;
+    width: 100%;
+}
+
+.footer {
+    background-color: #000;
+    color: white;
+    padding: 5px 0;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: -5px -5px 10px #fff, 5px 5px 10px #babebc;
+}

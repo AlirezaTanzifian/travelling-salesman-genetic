@@ -1,13 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
     <title>Genetic algorithm</title>
-</head>
-<body>
-    <div id="Matrix"></div>
+  </head>
+  <body>
+    <div class="title">
+      <span
+        >پیاده سازی مسئله فروشنده دوره گرد با استفاده از الگوریتم ژنتیک</span
+      >
+    </div>
+
+    <div class="input-section">
+      <span class="input-text">لطفا تعداد شهر را وارد کنید</span>
+      <form id="form">
+        <!-- <button class="btn">تائید</button>  -->
+        <input type="text" name="number-of-cities" id="input" />
+      </form>
+    </div>
+
+    <div class="container">
+      <div class="info-box">
+        <p>بهینه ترین مسیر</p>
+        <br />
+        <span id="best-rote"></span>
+        <br />
+        <p>فیتنس بهینه ترین مسیر</p>
+        <br />
+        <span id="fitness"></span>
+      </div>
+      <div class="matrix-box">
+        <span>ماتریس مسیر</span>
+        <br />
+        <span id="matrix"> </span>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer">
+        <span>پیاده سازی شده توسط علیرضا تنظیفیان</span>
+      </div>
+    </footer>
+
     <script src="./GA.js"></script>
-</body>
+  </body>
 </html>
