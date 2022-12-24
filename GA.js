@@ -155,82 +155,82 @@ function serviveSelection(population, number_of_population) {
 
 function GA(number_of_city){
     if (number_of_city > 0){
+
         let number_of_population = 500;
-    let number_of_generation = 300;
-    
-    let crossover_probability = 80;
-    let mutation_probability = 20;
-    
-    let Distance_between_cities= [];
-    
-    for ( let i = 0 ; i < number_of_city ; i++ ) {
-        Distance_between_cities[ i ] = [];
-        for ( let j = 0 ; j <= i ; j++ ) {
-            if(i == j){
-                Distance_between_cities[ i ][ j ] = 0; 
+        let number_of_generation = 300;
+        
+        let crossover_probability = 80;
+        let mutation_probability = 20;
+        
+        let Distance_between_cities= [];
+
+        // create distance between cities matrix
+        for ( let i = 0 ; i < number_of_city ; i++ ) {
+            Distance_between_cities[ i ] = [];
+            for ( let j = 0 ; j <= i ; j++ ) {
+                if(i == j){
+                    Distance_between_cities[ i ][ j ] = 0; 
+                }
+                else{
+                    random_distance = Math.ceil(Math.random()*100);
+                    Distance_between_cities[ i ][ j ] = random_distance;
+                    Distance_between_cities[ j ][ i ] = random_distance;
+                }
             }
-            else{
-                random_distance = Math.ceil(Math.random()*100);
-                Distance_between_cities[ i ][ j ] = random_distance;
-                Distance_between_cities[ j ][ i ] = random_distance;
+        }
+        
+        // console.log(Distance_between_cities);
+        console.log( Distance_between_cities.join('\n') );
+        
+        // ceate population
+        let Population = initialization(number_of_population, number_of_city, Distance_between_cities);
+        // console.log(Population);
+        
+        let Maximum_loop_repetition = 20;
+        let loop_repetition = 0;   
+        
+        // Main Loop
+        for ( let i = 0 ; i < number_of_generation ; i++ ) {
+            let best_chromosome = Population[0];
+            let parents = parentSelection(Population, crossover_probability);
+            let offsprings = crossOver(parents, Distance_between_cities);
+            offsprings = mutation(offsprings, mutation_probability, Distance_between_cities);
+            Population = [...Population, ...offsprings];
+            Population = serviveSelection(Population, number_of_population);
+            if (best_chromosome.fitness == Population[0].fitness) {
+                console.log(Population.length);
+                loop_repetition += 1;
+            }
+            if (loop_repetition == Maximum_loop_repetition){
+                break
             }
         }
-    }
-    
-    // console.log(Distance_between_cities);
-    console.log( Distance_between_cities.join('\n') );
-    
-    
-    let Population = initialization(number_of_population, number_of_city, Distance_between_cities);
-    // console.log(Population);
-    
-    let Maximum_loop_repetition = 20;
-    let loop_repetition = 0;   
-    
-    // Main Loop
-    for ( let i = 0 ; i < number_of_generation ; i++ ) {
-        let best_chromosome = Population[0];
-        let parents = parentSelection(Population, crossover_probability);
-        let offsprings = crossOver(parents, Distance_between_cities);
-        offsprings = mutation(offsprings, mutation_probability, Distance_between_cities);
-        Population = [...Population, ...offsprings];
-        Population = serviveSelection(Population, number_of_population);
-        if (best_chromosome.fitness == Population[0].fitness) {
-            console.log(Population.length);
-            loop_repetition += 1;
+        
+        let best_answer = Population[0];
+        console.log(best_answer);
+
+        document.getElementsByClassName("container")[0].style.display = "flex";
+
+        let matrix = document.getElementById("matrix");
+
+        let matrix_value = "";
+        for ( let i = 0 ; i < Distance_between_cities.length ; i++ ) {
+            for ( let j = 0 ; j < Distance_between_cities[i].length ; j++ ) {
+                matrix_value += Distance_between_cities[i][j] + "\t&nbsp&nbsp&nbsp&nbsp&nbsp";
+            }
+            matrix_value += "<br>";
         }
-        if (loop_repetition == Maximum_loop_repetition){
-            break
+        matrix.innerHTML = matrix_value;
+
+        let best_rote = document.getElementById("best-rote");
+
+        let best_rote_value = "";
+        for ( let i = 0 ; i < best_answer.chromosome.length ; i++ ) {
+            best_rote_value += best_answer.chromosome[i] + "\t&nbsp&nbsp&nbsp&nbsp&nbsp";
         }
-    }
-    
-    let best_answer = Population[0];
-    console.log(best_answer);
-
-    document.getElementsByClassName("container")[0].style.display = "flex";
-
-    let matrix = document.getElementById("matrix");
-
-    let matrix_value = "";
-    for ( let i = 0 ; i < Distance_between_cities.length ; i++ ) {
-        for ( let j = 0 ; j < Distance_between_cities[i].length ; j++ ) {
-            matrix_value += Distance_between_cities[i][j] + "\t&nbsp&nbsp&nbsp&nbsp&nbsp";
-        }
-        matrix_value += "<br>";
-    }
-    matrix.innerHTML = matrix_value;
-
-    let best_rote = document.getElementById("best-rote");
-
-    let best_rote_value = "";
-    for ( let i = 0 ; i < best_answer.chromosome.length ; i++ ) {
-        best_rote_value += best_answer.chromosome[i] + "\t&nbsp&nbsp&nbsp&nbsp&nbsp";
-    }
-    best_rote.innerHTML = best_rote_value;
-    
-    let fitness_value = document.getElementById("fitness");
-    fitness_value.innerText = best_answer.fitness;
-
+        best_rote.innerHTML = best_rote_value;
+        
+        let fitness_value = document.getElementById("fitness");
+        fitness_value.innerText = best_answer.fitness;
     }
 }
-
